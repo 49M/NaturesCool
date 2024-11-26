@@ -66,6 +66,11 @@ const MiddleBlock = ({ title, content, button, t }: MiddleBlockProps) => {
                   Result: {result}
                 </div>
               )}
+
+              {/* Link to external website */}
+              <a href="https://roysu17.github.io/roysu17.github.io./" target="_blank" rel="noopener noreferrer">
+                Estimate temperatures
+              </a>
             </Col>
           </ContentWrapper>
         </Row>
