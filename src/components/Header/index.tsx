@@ -23,35 +23,17 @@ const Header = ({ t }: { t: TFunction }) => {
     setVisibility(!visible);
   };
 
-  const MenuItem = () => {
-    const navigateToPage = (url: string) => {
-      window.open(url, "_blank"); // Opens the URL in a new tab
-      setVisibility(false); // Hide the menu if necessary
-    };
+  // Function for navigating to other pages
+  const navigateToPage = (url: string) => {
+    window.location.href = url; // Navigates to the specified URL
+    setVisibility(false); // Hide the menu if necessary
+  };
 
-  return (
-    <>
-      <CustomNavLinkSmall onClick={() => navigateToPage("/about")}>
-        <Span>{t("About")}</Span>
-      </CustomNavLinkSmall>
-      <CustomNavLinkSmall onClick={() => navigateToPage("/mission")}>
-        <Span>{t("Mission")}</Span>
-      </CustomNavLinkSmall>
-      <CustomNavLinkSmall onClick={() => navigateToPage("/product")}>
-        <Span>{t("Product")}</Span>
-      </CustomNavLinkSmall>
-      <CustomNavLinkSmall
-        style={{ width: "180px" }}
-        onClick={() => navigateToPage("/index.html")} // Navigate to calculate.html
-      >
-        <Span>
-          <Button>{t("Contact")}</Button>
-        </Span>
-      </CustomNavLinkSmall>
-    </>
-  );
-};
-
+  // Function for opening index.html in a new window
+  const openInNewWindow = (url: string) => {
+    window.open(url, "_blank", "width=800,height=600"); // Opens in new window/tab with specific size
+    setVisibility(false); // Close the menu
+  };
 
   return (
     <HeaderSection>
@@ -61,7 +43,24 @@ const Header = ({ t }: { t: TFunction }) => {
             <SvgIcon src="logo.svg" width="101px" height="64px" />
           </LogoContainer>
           <NotHidden>
-            <MenuItem />
+            <CustomNavLinkSmall onClick={() => navigateToPage("/about")}>
+              <Span>{t("About")}</Span>
+            </CustomNavLinkSmall>
+            <CustomNavLinkSmall onClick={() => navigateToPage("/mission")}>
+              <Span>{t("Mission")}</Span>
+            </CustomNavLinkSmall>
+            <CustomNavLinkSmall onClick={() => navigateToPage("/product")}>
+              <Span>{t("Product")}</Span>
+            </CustomNavLinkSmall>
+            {/* Link to open index.html in a new window */}
+            <CustomNavLinkSmall
+              style={{ width: "180px" }}
+              onClick={() => openInNewWindow("/data_slider.html")}
+            >
+              <Span>
+                <Button>{t("Contact")}</Button>
+              </Span>
+            </CustomNavLinkSmall>
           </NotHidden>
           <Burger onClick={toggleButton}>
             <Outline />
@@ -78,7 +77,25 @@ const Header = ({ t }: { t: TFunction }) => {
               </Col>
             </Label>
           </Col>
-          <MenuItem />
+          {/* Drawer menu items */}
+          <CustomNavLinkSmall onClick={() => navigateToPage("/about")}>
+            <Span>{t("About")}</Span>
+          </CustomNavLinkSmall>
+          <CustomNavLinkSmall onClick={() => navigateToPage("/mission")}>
+            <Span>{t("Mission")}</Span>
+          </CustomNavLinkSmall>
+          <CustomNavLinkSmall onClick={() => navigateToPage("/product")}>
+            <Span>{t("Product")}</Span>
+          </CustomNavLinkSmall>
+          {/* Special link to open index.html in a new window */}
+          <CustomNavLinkSmall
+            style={{ width: "180px" }}
+            onClick={() => openInNewWindow("/data_slider.html")}
+          >
+            <Span>
+              <Button>{t("Contact")}</Button>
+            </Span>
+          </CustomNavLinkSmall>
         </Drawer>
       </Container>
     </HeaderSection>
