@@ -23,36 +23,35 @@ const Header = ({ t }: { t: TFunction }) => {
     setVisibility(!visible);
   };
 
-  const MenuItem = () => {
-    const scrollTo = (id: string) => {
-      const element = document.getElementById(id) as HTMLDivElement;
-      element.scrollIntoView({
-        behavior: "smooth",
-      });
-      setVisibility(false);
-    };
-    return (
-      <>
-        <CustomNavLinkSmall onClick={() => scrollTo("about")}>
-          <Span>{t("About")}</Span>
-        </CustomNavLinkSmall>
-        <CustomNavLinkSmall onClick={() => scrollTo("mission")}>
-          <Span>{t("Mission")}</Span>
-        </CustomNavLinkSmall>
-        <CustomNavLinkSmall onClick={() => scrollTo("product")}>
-          <Span>{t("Product")}</Span>
-        </CustomNavLinkSmall>
-        <CustomNavLinkSmall
-          style={{ width: "180px" }}
-          onClick={() => scrollTo("contact")}
-        >
-          <Span>
-            <Button>{t("Contact")}</Button>
-          </Span>
-        </CustomNavLinkSmall>
-      </>
-    );
+const MenuItem = () => {
+  const navigateToPage = (url: string) => {
+    window.location.href = url; // Navigates to the specified URL
+    setVisibility(false); // Hide the menu if necessary
   };
+
+  return (
+    <>
+      <CustomNavLinkSmall onClick={() => navigateToPage("/about")}>
+        <Span>{t("About")}</Span>
+      </CustomNavLinkSmall>
+      <CustomNavLinkSmall onClick={() => navigateToPage("/mission")}>
+        <Span>{t("Mission")}</Span>
+      </CustomNavLinkSmall>
+      <CustomNavLinkSmall onClick={() => navigateToPage("/product")}>
+        <Span>{t("Product")}</Span>
+      </CustomNavLinkSmall>
+      <CustomNavLinkSmall
+        style={{ width: "180px" }}
+        onClick={() => navigateToPage("/index.html")} // Navigate to calculate.html
+      >
+        <Span>
+          <Button>{t("Contact")}</Button>
+        </Span>
+      </CustomNavLinkSmall>
+    </>
+  );
+};
+
 
   return (
     <HeaderSection>
