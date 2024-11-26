@@ -23,11 +23,11 @@ const Header = ({ t }: { t: TFunction }) => {
     setVisibility(!visible);
   };
 
-const MenuItem = () => {
-  const navigateToPage = (url: string) => {
-    window.location.href = url; // Navigates to the specified URL
-    setVisibility(false); // Hide the menu if necessary
-  };
+  const MenuItem = () => {
+    const navigateToPage = (url: string) => {
+      window.open(url, "_blank"); // Opens the URL in a new tab
+      setVisibility(false); // Hide the menu if necessary
+    };
 
   return (
     <>

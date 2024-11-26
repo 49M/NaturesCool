@@ -14,7 +14,7 @@ interface MiddleBlockProps {
 
 const MiddleBlock = ({ title, content, button, t }: MiddleBlockProps) => {
   const [inputValue, setInputValue] = useState<number | string>(""); // Store user input
-  const [result, setResult] = useState<number | null>(null); // Store calculated result
+  const [result, setResult] = useState<string | null>(null); // Store calculated result
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
@@ -25,7 +25,7 @@ const MiddleBlock = ({ title, content, button, t }: MiddleBlockProps) => {
 
   const handleButtonClick = () => {
     if (inputValue) {
-      setResult(Number(inputValue) * 20);
+      setResult(`$${Number(inputValue) * 20}`);
     }
   };
 
@@ -43,7 +43,7 @@ const MiddleBlock = ({ title, content, button, t }: MiddleBlockProps) => {
                 type="text"
                 value={inputValue}
                 onChange={handleInputChange}
-                placeholder="Enter a number"
+                placeholder="Enter a square footage"
                 style={{
                   display: "block",
                   marginBottom: "1rem",
